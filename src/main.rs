@@ -9,7 +9,7 @@ use std::cmp::Ordering;
 
 fn main()
 {
-    dataNumberTypes()
+    randomNum()
 }
 
 fn nameQuestion()
@@ -44,4 +44,11 @@ fn dataNumberTypes()
     println!("Max u128: {}", u128::MAX);
     println!("Max f32: {}", f32::MAX);
     println!("Max f64: {}", f64::MAX);
+}
+
+fn randomNum()
+{
+    let randomNum = rand::thread_rng().gen_range(1..101);
+
+    println!("Random: {}", randomNum);
 }
