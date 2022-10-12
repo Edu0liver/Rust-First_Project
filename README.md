@@ -1,3 +1,3 @@
 # Rust-First_Project
 
-## Just a repository to learn the basics of the language
+## Just a repository that documents my learning in the basics of the language
