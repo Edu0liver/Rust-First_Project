@@ -9,7 +9,7 @@ use std::cmp::Ordering;
 
 fn main()
 {
-    randomNum()
+    conditionals()
 }
 
 fn nameQuestion()
@@ -51,4 +51,26 @@ fn randomNum()
     let randomNum = rand::thread_rng().gen_range(1..101);
 
     println!("Random: {}", randomNum);
+}
+
+fn conditionals()
+{
+    let mut input = String::new();
+
+    println!("What is your age?");
+    io::stdin().read_line(&mut input)
+    .expect("Didn't receive input");
+
+    let mut age: usize = input.trim().parse()
+    .expect("Age wasn't assigned a number!");
+
+    if (age >= 1) && (age <= 18) {
+        println!("Important Bithday");
+    } else if (age == 21) || (age == 50) {
+        println!("Important Bithday");
+    } else if age >= 65 {
+        println!("Important Bithday");
+    } else {
+        println!("Not Important Bithday");
+    }
 }
