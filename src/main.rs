@@ -9,7 +9,7 @@ use std::cmp::Ordering;
 
 fn main()
 {
-    conditionals()
+    ternaryOperator()
 }
 
 fn nameQuestion()
@@ -61,7 +61,7 @@ fn conditionals()
     io::stdin().read_line(&mut input)
     .expect("Didn't receive input");
 
-    let mut age: usize = input.trim().parse()
+    let age: usize = input.trim().parse()
     .expect("Age wasn't assigned a number!");
 
     if (age >= 1) && (age <= 18) {
@@ -73,4 +73,29 @@ fn conditionals()
     } else {
         println!("Not Important Bithday");
     }
+}
+
+fn ternaryOperator()
+{
+    let mut age = String::new();
+
+    println!("What is your age?");
+    io::stdin().read_line(&mut age)
+    .expect("Didn't receive input");
+
+    let age: usize = age.trim().parse()
+    .expect("Age wasn't assigned a number!");
+    
+    let canVote = if age >= 16 {
+        true
+    } else {
+        false
+    };
+
+    if canVote {
+        println!("You can vote!");
+    } else {
+        println!("You can't vote!");
+    }
+    
 }
