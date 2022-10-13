@@ -8,7 +8,7 @@ use std::fs::File;
 use std::cmp::Ordering;
 
 fn main() {
-    arrayWhile()
+    tuples()
 }
 
 fn nameQuestion() {
@@ -166,4 +166,14 @@ fn arrayForLoop() {
     for val in arr.iter() {
         println!("Valor: {}", val);
     }
+}
+
+fn tuples() {
+    let tuple: ( u8, String, f64 ) = ( 19, "Edu".to_string(), 50_000.00 );
+
+    println!("Name: {}", tuple.1);
+    
+    let ( v1, v2, v3 ) = tuple;
+
+    println!("Age: {}", v1);
 }
