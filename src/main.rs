@@ -7,13 +7,11 @@ use std::io::{Write, ErrorKind, BufRead, BufReader};
 use std::fs::File;
 use std::cmp::Ordering;
 
-fn main()
-{
-    ternaryOperator()
+fn main() {
+    matchStatementCmp()
 }
 
-fn nameQuestion()
-{
+fn nameQuestion() {
     println!("What is your name? ");
     let mut name = String::new();
     let greeting = "Nice to meet you!";
@@ -23,8 +21,7 @@ fn nameQuestion()
     println!("Hello {}!, {}", name.trim_end(), greeting);
 }
 
-fn changeVariableType()
-{
+fn changeVariableType() {
     const ONE_MILLION: u32 = 1_000_000;
     const PI: f32 = 3.141592;
     let age = "19";
@@ -36,8 +33,7 @@ fn changeVariableType()
     println!("I'm {} and I have ${}", age, ONE_MILLION);
 }
 
-fn dataNumberTypes()
-{
+fn dataNumberTypes() {
     println!("Max u32: {}", u32::MAX);
     println!("Max u64: {}", u64::MAX);
     println!("Max usize: {}", usize::MAX);
@@ -46,15 +42,13 @@ fn dataNumberTypes()
     println!("Max f64: {}", f64::MAX);
 }
 
-fn randomNum()
-{
+fn randomNum() {
     let randomNum = rand::thread_rng().gen_range(1..101);
 
     println!("Random: {}", randomNum);
 }
 
-fn conditionals()
-{
+fn conditionals() {
     let mut input = String::new();
 
     println!("What is your age?");
@@ -75,8 +69,7 @@ fn conditionals()
     }
 }
 
-fn ternaryOperator()
-{
+fn ternaryOperator() {
     let mut age = String::new();
 
     println!("What is your age?");
@@ -97,5 +90,41 @@ fn ternaryOperator()
     } else {
         println!("You can't vote!");
     }
-    
+
+}
+
+fn matchStatement() {
+    let mut input = String::new();
+
+    println!("What is your age?");
+    io::stdin().read_line(&mut input)
+    .expect("Didn't receive input");
+
+    let age: i32 = input.trim().parse()
+    .expect("Age wasn't assigned a number!");
+
+    match age {
+        1..=18 => println!("Important Bithday"),
+        21 | 50 => println!("Important Bithday"),
+        65..=i32::MAX => println!("Important Bithday"),
+        _ => println!("Not Important Bithday")
+    };
+}
+
+fn matchStatementCmp() {
+    let mut input = String::new();
+    let votingAge = 16;
+
+    println!("What is your age?");
+    io::stdin().read_line(&mut input)
+    .expect("Didn't receive input");
+
+    let age: usize = input.trim().parse()
+    .expect("Age wasn't assigned a number!");
+
+    match age.cmp(&votingAge) {
+        Ordering::Less => println!("Can't Vote"),
+        Ordering::Equal => println!("You Gained the Right to Vote"),
+        Ordering::Greater => println!("Can Vote"),
+    };
 }
