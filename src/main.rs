@@ -8,7 +8,7 @@ use std::fs::File;
 use std::cmp::Ordering;
 
 fn main() {
-    matchStatementCmp()
+    arrayWhile()
 }
 
 fn nameQuestion() {
@@ -127,4 +127,43 @@ fn matchStatementCmp() {
         Ordering::Equal => println!("You Gained the Right to Vote"),
         Ordering::Greater => println!("Can Vote"),
     };
+}
+
+fn arrayLoop() {
+    let arr = [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ];
+    let mut loopIndex = 0;
+
+    loop {
+        if arr[loopIndex] % 2 == 0 {
+            loopIndex += 1;
+            continue;
+        }
+        
+        if arr[loopIndex] == 9 {
+            break;
+        }
+
+        println!("Valor: {}", arr[loopIndex]);
+        loopIndex += 1;
+    }
+}
+
+fn arrayWhile() {
+    let arr = [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ];
+    let mut loopIndex = 0;
+
+    while loopIndex < arr.len() {
+        println!("Array: {}", arr[loopIndex]);
+        loopIndex += 1;
+    }
+
+}
+
+fn arrayForLoop() {
+    let arr = [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ];
+    let mut loopIndex = 0;
+
+    for val in arr.iter() {
+        println!("Valor: {}", val);
+    }
 }
