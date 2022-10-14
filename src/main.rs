@@ -8,7 +8,7 @@ use std::fs::File;
 use std::cmp::Ordering;
 
 fn main() {
-    casting();
+    enums();
 }
 
 fn nameQuestion() {
@@ -188,7 +188,7 @@ fn stringsOverview() {
     println!("String: {}", string);
 
     for word in string.split_whitespace() {
-        print!("Word: {}\n", word);
+        println!("Word: {}\n", word);
     }
 
     let string2 = string.replace("A", "Another");
@@ -234,4 +234,41 @@ fn casting(){
     let int3_u32: u32 = (int_u8 as u32) + (int2_u8 as u32);
 
     println!("int3: {}", int3_u32);
+}
+
+fn enums(){
+    enum Day {
+        Monday,
+        Tuesday,
+        Wednesday,
+        Thursday,
+        Friday,
+        Saturday,
+        Sunday
+    }
+
+    impl Day {
+        fn is_weekend(&self) -> bool {
+            match self {
+                Day::Saturday | Day::Sunday => true,
+                _ => false
+            }
+        }
+    }
+
+    let today: Day = Day::Monday;
+
+    match today {
+        Day::Monday => println!("Everyone hates Monday!"),
+        Day::Tuesday => println!("Donut day!"),
+        Day::Wednesday => println!("Hump day!"),
+        Day::Thursday => println!("Pay day!"),
+        Day::Friday => println!("Almost weekend!"),
+        Day::Saturday => println!("Weekend!"),
+        Day::Sunday => println!("Weekend!"),
+        _ => println!("Not a day")
+    }
+
+    println!("Is today a weekend? : {}", today.is_weekend());
+
 }
