@@ -8,7 +8,7 @@ use std::fs::File;
 use std::cmp::Ordering;
 
 fn main() {
-    tuples()
+    stringsOverview();
 }
 
 fn nameQuestion() {
@@ -176,4 +176,54 @@ fn tuples() {
     let ( v1, v2, v3 ) = tuple;
 
     println!("Age: {}", v1);
+}
+
+fn stringsOverview() {
+    let mut string = String::new();
+
+    string.push('A');
+    string.push(' ');
+    string.push_str("word");
+
+    println!("String: {}", string);
+
+    for word in string.split_whitespace() {
+        print!("Word: {}\n", word);
+    }
+
+    let string2 = string.replace("A", "Another");
+
+    println!("String 2: {}", string2);
+
+    let string3 = String::from("k n b v k k l m c p e");
+
+    let mut v1: Vec<char> = string3.chars().collect();
+    
+    v1.sort();
+    v1.dedup();
+
+    for char in v1 {
+        println!("Char: {}", char);
+    }
+
+    let string4: &str = "Random string";
+    let mut string5: String = string4.to_string();
+
+    println!("string5: {}", string5);
+    
+    let byte_arr = string5.as_bytes();
+    let string6 = &string[0..6];
+    
+    println!("String Length: {}", string6.len());
+
+    string5.clear();
+
+    let string7 = String::from("Just some");
+    let string8 = String::from(" words");
+    let string9 = string7 + &string8;
+
+    for char in string9.bytes() {
+        println!("Char: {}", char);
+    }
+
 }
