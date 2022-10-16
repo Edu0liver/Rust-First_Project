@@ -6,9 +6,10 @@ use rand::Rng;
 use std::io::{Write, ErrorKind, BufRead, BufReader};
 use std::fs::File;
 use std::cmp::Ordering;
+use std::ops::Add;
 
 fn main() {
-    vectors();
+    println!("{}", generics(1, 7));
 }
 
 fn nameQuestion() {
@@ -299,4 +300,8 @@ fn vectors() {
     println!("Vec2 length: {}", vec2.len());
     println!("Vec2 value pop: {:?}", vec2.pop());
 
+}
+
+fn generics<T: Add<Output = T>>(x: T, y:T) -> T {
+    return x + y;
 }
