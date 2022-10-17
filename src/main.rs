@@ -13,7 +13,7 @@ mod restaurant;
 use crate::restaurant::orderFood;
 
 fn main() {
-    orderFoodModule();
+    errorHandling();
 }
 
 fn nameQuestion() {
@@ -415,4 +415,8 @@ fn traits() {
 
 fn orderFoodModule() {
     orderFood();
+}
+
+fn errorHandling() {
+    panic!("Terrible Error");
 }
