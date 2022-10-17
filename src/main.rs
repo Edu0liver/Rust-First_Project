@@ -7,9 +7,10 @@ use std::io::{Write, ErrorKind, BufRead, BufReader};
 use std::fs::File;
 use std::cmp::Ordering;
 use std::ops::Add;
+use std::collections::HashMap;
 
 fn main() {
-    ownership();
+    hashMaps();
 }
 
 fn nameQuestion() {
@@ -314,4 +315,26 @@ fn ownership() {
 
     println!("Hello {}, string1 borrow valor", string2);
     println!("Hello {}, string2 cloned valor", string3);
+}
+
+fn hashMaps() {
+    let mut heroes = HashMap::new();
+
+    heroes.insert("Batman", "Bruce Wayne");
+    heroes.insert("The Flash", "Barry Allen");
+    heroes.insert("Superman", "Clark Kent");
+
+    for (k, v) in heroes.iter() {
+        println!("{} = {}", k, v);
+    }
+
+    if heroes.contains_key(&"Batman") {
+        let the_batman = heroes.get(&"Batman");
+
+        match the_batman {
+            Some(x) => println!("Batman is a hero!"),
+            Nome => println!("Batman is not a hero!")
+        }
+
+    }
 }
