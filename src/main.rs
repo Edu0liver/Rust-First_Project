@@ -9,8 +9,11 @@ use std::cmp::Ordering;
 use std::ops::Add;
 use std::collections::HashMap;
 
+mod restaurant;
+use crate::restaurant::orderFood;
+
 fn main() {
-    traits();
+    orderFoodModule();
 }
 
 fn nameQuestion() {
@@ -408,4 +411,8 @@ fn traits() {
     println!("Rectangle Area: {}", rec.area());
     println!("Circle Area: {}", circ.area());
 
+}
+
+fn orderFoodModule() {
+    orderFood();
 }
