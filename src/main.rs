@@ -9,7 +9,7 @@ use std::cmp::Ordering;
 use std::ops::Add;
 
 fn main() {
-    println!("{}", generics(1, 7));
+    ownership();
 }
 
 fn nameQuestion() {
@@ -304,4 +304,14 @@ fn vectors() {
 
 fn generics<T: Add<Output = T>>(x: T, y:T) -> T {
     return x + y;
+}
+
+fn ownership() {
+    //Applied to Strings, Arrays and Vectors.
+    let string1 = String::from("World");
+    let string2 = string1;
+    let string3 = string2.clone();
+
+    println!("Hello {}, string1 borrow valor", string2);
+    println!("Hello {}, string2 cloned valor", string3);
 }
