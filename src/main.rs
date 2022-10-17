@@ -13,7 +13,7 @@ mod restaurant;
 use crate::restaurant::orderFood;
 
 fn main() {
-    iterators();
+    closures();
 }
 
 fn nameQuestion() {
@@ -467,4 +467,18 @@ fn iterators() {
     let mut iter1 = arr1.iter();
 
     println!("1st: {:?}", iter1.next())
+}
+
+fn closures() {
+    fn useFunc<T>(a: i32, b: i32, func: T) -> i32
+    where T: Fn(i32, i32) -> i32 {
+        func(a,b)
+    }
+
+    let sum = |a: i32, b: i32| a + b;
+    let multi = |a: i32, b: i32| a * b;
+
+    println!("5 + 4 = {}", useFunc(5, 4, sum));
+    println!("5 * 4 = {}", useFunc(5, 4, multi));
+
 }
