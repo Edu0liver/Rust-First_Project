@@ -13,13 +13,13 @@ mod restaurant;
 use crate::restaurant::orderFood;
 
 fn main() {
-    errorHandling();
+    fileIo();
 }
 
 fn nameQuestion() {
     println!("What is your name? ");
     let mut name = String::new();
-    let greeting = "Nice to meet you!";
+    let greeting = "Nice fto meet you!";
     io::stdin().read_line(&mut name)
     .expect("Didn't receive input");
     
@@ -419,4 +419,40 @@ fn orderFoodModule() {
 
 fn errorHandling() {
     panic!("Terrible Error");
+}
+
+fn fileIo() {
+    let path = "lines.txt";
+    let output = File::create(path);
+
+    let mut output = match output {
+        Ok(file) => file,
+        Err(error) => {
+            panic!("Problem creating file: {:?}", error);
+        }
+    };
+
+    write!(output, "Just some\nRandom words")
+    .expect("Failed to write to file!");
+    
+    let input = File::open(path).unwrap();
+    let buffered = BufReader::new(input);
+    
+    for line in buffered.lines() {
+        println!("{}", line.unwrap());
+    }
+
+    let output2 = File::create("rand.txt");
+
+    let output2 = match output2 {
+        Ok(file) => file,
+        Err(error) => match error.kind() {
+            ErrorKind::NotFound => match File::create("rand.txt") {
+                Ok(fileCreated) => fileCreated,
+                Err(error) => panic!("Can't create file: {:?}", error),
+            },
+            _other_error => panic!("Problem opening file: {:?}", error),
+        },
+    };
+
 }
