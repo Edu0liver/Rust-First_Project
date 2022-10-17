@@ -13,7 +13,7 @@ mod restaurant;
 use crate::restaurant::orderFood;
 
 fn main() {
-    fileIo();
+    iterators();
 }
 
 fn nameQuestion() {
@@ -455,4 +455,16 @@ fn fileIo() {
         },
     };
 
+}
+
+fn iterators() {
+    let mut arr1 = [1, 2, 3, 4];
+
+    for val in arr1.iter() {
+        println!("{}", val);
+    }
+
+    let mut iter1 = arr1.iter();
+
+    println!("1st: {:?}", iter1.next())
 }
