@@ -482,3 +482,32 @@ fn closures() {
     println!("5 * 4 = {}", useFunc(5, 4, multi));
 
 }
+
+fn boxConcept() {
+    struct TreeNode<T> {
+        pub left: Option<Box<TreeNode<T>>>,
+        pub right: Option<Box<TreeNode<T>>>,
+        pub key: T
+    }
+
+    impl<T> TreeNode<T> {
+        pub fn new(key: T) -> Self {
+            TreeNode { left: None, right: None, key }
+        }
+
+        pub fn left(mut self, node: TreeNode<T>) -> Self {
+            self.left = Some(Box::new(node));
+            return self;
+        }
+
+        pub fn right(mut self, node: TreeNode<T>) -> Self {
+            self.right = Some(Box::new(node));
+            return self;
+        }
+    }
+
+    let node1 = TreeNode::new(1)
+    .left(TreeNode::new(2))
+    .right(TreeNode::new(3));
+
+}
