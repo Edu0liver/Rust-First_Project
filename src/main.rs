@@ -338,3 +338,31 @@ fn hashMaps() {
 
     }
 }
+
+fn structs() {
+
+    struct Customer {
+        name: String,
+        address: String,
+        balance: f32
+    }
+
+    let mut edu = Customer {
+        name: String::from("Eduardo"),
+        address: String::from("91 Rua OB"),
+        balance: 1432.31
+    };
+
+    edu.address = String::from("34 Rua OB");
+
+    struct Rectangle<T, U> {
+        length: T,
+        height: U
+    }
+
+    let rec = Rectangle {
+        length: 4,
+        height: 10.5
+    };
+    
+}
